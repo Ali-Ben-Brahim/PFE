@@ -1,82 +1,83 @@
 import 'package:flutter/material.dart';
+import 'package:reschool/Model/maps.dart';
+import 'package:reschool/Model/reclamation.dart';
+import 'package:reschool/signup.dart';
 
 class Accueil extends StatelessWidget {
   const Accueil({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    List item = [
+      {"image": "Image/1.png", "title": "État poubelle", "page": Maps()},
+      {"image": "Image/2.png", "title": "État camion", "page": Login()},
+      {"image": "Image/3.png", "title": "Zone de dépôt", "page": Login()},
+      {"image": "Image/4.png", "title": "Réclamation", "page": Signaler()},
+      {"image": "Image/5.png", "title": "Paramètre", "page": Signaler()},
+      {"image": "Image/6.png", "title": "Se déconnecter", "page": Login()}
+    ];
     return Scaffold(
-        appBar: AppBar(
-            backgroundColor: Color(0xFF20E08F),
-            title: Text("Accueil",
-                style: TextStyle(
-                  fontFamily: "hindi",
-                  fontSize: 30,
-                ))),
-        body: Container(
-            alignment: Alignment.center,
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: GridView(
-                  shrinkWrap: true,
-                  children: [
-                    Container(
+      appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Login()),
+            ),
+          ),
+          backgroundColor: Color(0xFF20E08F),
+          title: Text("Accueil",
+              style: TextStyle(
+                fontFamily: "hindi",
+                fontSize: 30,
+              ))),
+      body: GridView.count(
+        crossAxisCount: 2,
+        mainAxisSpacing: 60,
+        padding: EdgeInsets.all(20),
+        children: List.generate(item.length, (i) {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InkWell(
+                child: Material(
+                  child: Image.asset(
+                    item[i]['image'],
+                    fit: BoxFit.contain,
+                    width: 140,
+                    height: 140,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => (item[i]['page'])),
+                  );
+                },
+              ),
+              SizedBox(
+                height: 6,
+              ),
+              InkWell(
+                child: Text(
+                  item[i]['title'],
+                  style: TextStyle(
+                    fontFamily: "hindi",
+                    fontSize: 20,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => (item[i]['page'])),
+                  );
+                },
+              ),
 
-
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                    decoration: const BoxDecoration(
-
-                            image: DecorationImage(
-
-                          image: AssetImage("Image/1.png"),
-                        )),
-
-                            child:Text("Etat poubelle") ,    )
-
-                              ],
-                            )
-                                ),
-
-                    Container(
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                        image: AssetImage("Image/2.png"),
-                      )),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                        image: AssetImage("Image/3.png"),
-                      )),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                        image: AssetImage("Image/4.png"),
-                      )),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                        image: AssetImage("Image/5.png"),
-                      )),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                        image: AssetImage("Image/6.png"),
-                      )),
-                    )
-                  ],
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 20,
-                      crossAxisSpacing: 20)),
-            )
-            )
-            );
+            ],
+          );
+        }),
+      ),
+    );
   }
 }

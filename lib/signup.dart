@@ -1,9 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:reschool/Model/maps.dart';
 import 'package:reschool/Model/reclamation.dart';
-import 'package:reschool/Model/test.dart';
+import 'package:reschool/Model/Accueil.dart';
 
-class Login extends StatelessWidget {
+
+class Login extends StatefulWidget {
   Login({Key? key}) : super(key: key);
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  String _data = "";
+  _Scan() async {
+    await FlutterBarcodeScanner.scanBarcode(
+            "#000000", "cancel", true, ScanMode.BARCODE)
+        .then((value) => setState(() => _data = value));
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,7 +38,7 @@ class Login extends StatelessWidget {
                   width: 400,
                   height: 150,
                   alignment: Alignment.center,
-                  margin: EdgeInsets.all(70),
+                  margin: EdgeInsets.all(50),
                   padding: EdgeInsets.all(20),
                   decoration: BoxDecoration(
                       image: DecorationImage(
@@ -40,7 +55,7 @@ class Login extends StatelessWidget {
                           borderRadius: BorderRadius.circular(24),
                           borderSide:
                               BorderSide(color: Color(0xFF20E08F), width: 2.0)),
-                      hintText: 'johndoe@mail.com',
+                      hintText: 'Exemple@mail.com',
                     ),
                   ),
                 ),
@@ -77,7 +92,7 @@ class Login extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Signaler()),
+                        MaterialPageRoute(builder: (context) => Maps()),
                       );
                     },
                   ),
@@ -86,7 +101,7 @@ class Login extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Test()),
+                      MaterialPageRoute(builder: (context) => Accueil()),
                     );
                   },
                   style: ButtonStyle(
@@ -100,8 +115,35 @@ class Login extends StatelessWidget {
                       textStyle: MaterialStateProperty.all(
                           const TextStyle(fontSize: 16))),
                   child: Text('Connecter'),
-                )
-              ]),
-            )));
+                ),
+Container(padding:EdgeInsets.all(20), child: Divider(thickness: 2,),),
+
+          Container( child:
+
+
+Text("ou connecter avec QR"),
+
+          ),
+         InkWell(
+           child: Container(  margin: EdgeInsets.all(20),
+            child:  Icon(Icons.qr_code_scanner,size: 72,),
+
+            ),
+            onTap: () => _Scan(),),
+                Container(child: Text(_data),)
+
+               ]
+
+               ),
+
+            ),
+            ),
+            );
   }
 }
+
+
+
+
+
+
