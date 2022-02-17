@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-import 'package:reschool/Model/maps.dart';
-import 'package:reschool/Model/reclamation.dart';
+import 'package:reschool/Model/GoogleMaps.dart';
 import 'package:reschool/Model/Accueil.dart';
 
 
@@ -92,7 +91,7 @@ class _LoginState extends State<Login> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Maps()),
+                        MaterialPageRoute(builder: (context) => GM()),
                       );
                     },
                   ),

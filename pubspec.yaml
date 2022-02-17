@@ -38,7 +38,6 @@ dependencies:
   flutter_barcode_scanner: ^2.0.0
   flutter_map: ^0.14.0
   awesome_dialog: ^2.1.2
-  mapbox_gl: ^0.15.0
 flutter_app:
 url_launcher:
   ^5.4.0

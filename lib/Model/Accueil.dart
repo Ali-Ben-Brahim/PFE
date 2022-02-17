@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reschool/Model/GoogleMaps.dart';
 import 'package:reschool/Model/maps.dart';
 import 'package:reschool/Model/reclamation.dart';
 import 'package:reschool/signup.dart';
@@ -9,7 +10,7 @@ class Accueil extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List item = [
-      {"image": "Image/1.png", "title": "État poubelle", "page": Maps()},
+      {"image": "Image/1.png", "title": "État poubelle", "page": GM()},
       {"image": "Image/2.png", "title": "État camion", "page": Login()},
       {"image": "Image/3.png", "title": "Zone de dépôt", "page": Login()},
       {"image": "Image/4.png", "title": "Réclamation", "page": Signaler()},

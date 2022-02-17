@@ -4,8 +4,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:reschool/Model/Accueil.dart';
 import 'package:latlong2/latlong.dart' as latLng;
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:reschool/Model/maps.dart';
-import 'package:mapbox_gl/mapbox_gl.dart';
+
 
 class Maps extends StatefulWidget {
   Maps({Key? key}) : super(key: key);
@@ -92,3 +91,4 @@ class _MapsState extends State<Maps> {
     );
   }
 }
+//AIzaSyC0au9FbVLUYFvC5gRFnmXtiNYUgzM8Rwc
