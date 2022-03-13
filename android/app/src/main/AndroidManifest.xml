@@ -4,13 +4,15 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET"/>
-
+     <queries>
+    <package android:name="com.google.android.apps.maps" />
+  </queries>
    <application
         android:label="reschool"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <meta-data android:name="com.google.android.geo.API_KEY"
-               android:value="AIzaSyC0au9FbVLUYFvC5gRFnmXtiNYUgzM8Rwc"/>
+               android:value="AIzaSyCM_y_hH1jw8ucuvhzfmGdKMloxPwBjbAo"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
